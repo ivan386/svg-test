@@ -1,0 +1,60 @@
+<svg height="7em" width="14em" xmlns="http://www.w3.org/2000/svg">
+	<text y="1em">☑ CSS работает</text>
+	<!--
+		Если CSS не сработает g останется видимым и закроет собой text
+	-->
+	<g style="display: none">
+		<rect y="0em" height="1.3em" width="100%" fill="white"/>
+		<text y="1em"  >☐ CSS не работает</text>
+	</g>
+	
+	<text y="2.3em">☐ foreignObject не работает</text>
+	<!--
+		Если foreignObject сработает то table закроет собой text
+	-->
+	<foreignObject y="1.3em" width="100%" height="2em" requiredExtensions="http://www.w3.org/1999/xhtml">
+		<table bgcolor="white" cellpadding="0" cellspacing="0" width="100%" xmlns="http://www.w3.org/1999/xhtml">
+			<tr><td>☑ foreignObject работает</td></tr>
+		</table>
+	</foreignObject>
+	
+	<text y="3.6em">☑ JavaScript работает</text>
+	<!--
+		Если JavaScript не сработает g останется и закроет собой text
+	-->
+	<g id="noscript">
+		<rect y="2.6em" height="2em" width="100%" fill="white"/>
+		<text y="3.6em" id="noscript">☐ JavaScript не работает</text>
+	</g>
+	
+	<script><![CDATA[
+		var noscript = document.getElementById("noscript");
+		if (noscript)
+			noscript.parentNode.removeChild(noscript);
+	]]></script>
+	
+	
+	<text y="4.9em">☑ CSS анимация работает</text>
+	<!--
+		Если CSS анимация не сработает g останется видимым и закроет собой text
+	-->
+	<g style="animation: hide 1s paused">
+		<rect y="3.9em" height="1.3em" width="100%" fill="white"/>
+		<text y="4.9em"  >☐ CSS анимация не работает</text>
+	</g>
+	
+	<style><![CDATA[
+		@keyframes hide { 0% { visibility: hidden; }  }
+	]]></style>
+	
+	<text y="6.2em">☑ SMIL анимация работает</text>
+	<!--
+		Если SMIL не сработает g останется видимым и закроет собой text
+	-->
+	<g>
+		<rect y="5.2em" height="1.3em" width="100%" fill="white"/>
+		<text y="6.2em"  >☐ SMIL анимация не работает</text>
+		<set attributeName="visibility" to="hidden" dur="0s" fill="freeze" />
+	</g>
+	
+</svg>
