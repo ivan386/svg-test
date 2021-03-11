@@ -1,4 +1,5 @@
-<svg height="7em" width="14em" xmlns="http://www.w3.org/2000/svg">
+<?xml-stylesheet type="text/xsl" href="#xslt"?>
+<svg height="8em" width="14em" xmlns="http://www.w3.org/2000/svg">
 	<text y="1em">☑ CSS работает</text>
 	<!--
 		Если CSS не сработает g останется видимым и закроет собой text
@@ -56,5 +57,22 @@
 		<text y="6.2em"  >☐ SMIL анимация не работает</text>
 		<set attributeName="visibility" to="hidden" dur="0s" fill="freeze" />
 	</g>
+	
+	<text class="xslt-test" y="7.5em">☐ XSLT не работает</text>
+	
+	<xsl:stylesheet id="xslt" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  version="1.0">
+		<xsl:template match="node()|@*">
+			<xsl:copy>
+				<xsl:apply-templates select="node()|@*" />
+			</xsl:copy>
+		</xsl:template>
+		
+		<xsl:template match="*[@class='xslt-test']">
+			<xsl:copy>
+				<xsl:apply-templates select="@*" />
+				☑ XSLT работает
+			</xsl:copy>
+		</xsl:template>
+	</xsl:stylesheet>
 	
 </svg>
